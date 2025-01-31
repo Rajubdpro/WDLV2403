@@ -1,50 +1,28 @@
+
 <?php
 session_start();
 ?>
-
 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Website development using php</title>
+    <title>Website Development Using PHP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/style.scss" rel="stylesheet">
 </head>
 <body>
 
 <!---***************************************
-* Register form here with error message
+* login form here with error message
 ***************************************--->
 
 <section class="wrapper">
-    <div class="form signup">
-        <header>Signup</header>
-        <form action="register_post.php" method="POST">
+    <div class="form SingIn">
+        <header>Login</header>
+        <form action="login_post.php" method="POST">
             <!--- success message after registration success-->
-            <div class="success_message">
-                <?php
-                if (isset($_SESSION['success'])) {
-                    ?>
-                    <strong class="success_message alert alert-success" style="padding-right: 140px"><?php echo $_SESSION['success']; ?></strong>
-                    <?php
-
-                }unset($_SESSION['success']);
-                ?>
-            </div>
-            <input type="text" name="name" placeholder="Full name" />
-            <!--name error message-->
-            <div class="name_error">
-                <?php
-                if (isset($_SESSION['name_error'])) {
-                    ?>
-                    <strong class="error_message"><?php echo $_SESSION['name_error']; ?></strong>
-                <?php
-
-                }unset($_SESSION['name_error']);
-                ?>
-            </div>
             <input type="email" name="email" placeholder="Email address" />
 
             <!--email error message-->
@@ -70,14 +48,16 @@ session_start();
                 }unset($_SESSION['password_error']);
                 ?>
             </div>
-            <input type="submit" value="Signup" />
+            <input type="submit" value="Sign In" />
         </form>
     </div>
     <div class="form login">
-        <header><a class="login_btn" href="/wdlv2403/login.php" >Login<a/></header>
+        <header><a href="/wdlv2403/register.php">Register</a></header>
     </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+

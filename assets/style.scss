@@ -7,6 +7,9 @@
   font-family: "Poppins",
   sans-serif;
 }
+a{
+  text-decoration: none;
+}
 body {
   min-height: 100vh;
   display: flex;
@@ -156,4 +159,9 @@ input[type="submit"] {
   background: #4070f4;
   color: #fff;
   border: none;
+}
+
+.error_message{
+  color: #F74343;
+  font-size: 18px;
 }

@@ -56,9 +56,10 @@ if ($flag){
         // Check if the password is correct
         $sql = "SELECT * FROM users WHERE email='$email'";
         $result = $conn->query($sql);
-        $after_assoc = $result->fetch_assoc();
-        if (password_verify($password, $after_assoc['password'])) {
+        $after_assoc2 = $result->fetch_assoc();
+        if (password_verify($password, $after_assoc2['password'])) {
             $_SESSION['login_success'] = "Login successful";
+            $_SESSION['logged_id'] = $after_assoc2['id'];
             header("Location: dashboard.php");
         } else {
             $_SESSION['password_error'] = "Password is incorrect";

@@ -9,8 +9,12 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Website Development Using PHP</title>
+    <!---bootstrap css--->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!---style.css--->
     <link href="assets/style.scss" rel="stylesheet">
+    <!---Favicon icon--->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
 </head>
 <body>
 

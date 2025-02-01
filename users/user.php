@@ -29,26 +29,26 @@ require '../includes/header.php';
                     <tbody>
                         <?php
                         $sql = "SELECT * FROM users";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($row = mysqli_fetch_assoc($result)) {
+                        $users = mysqli_query($conn, $sql);
+                        $i = 1;
+                        foreach ($users as $user){
                             ?>
                             <tr>
-                                <td><?php echo $row['id']; ?></td>
+                                <td><?php echo $i++; ?></td>
                                 <td>
                                     <?php
-                                    if ($row['photo'] == '') {
+                                    if ($user['photo'] == '') {
                                         echo '<img src="/wdlv2403/uploads/user/default_user.png" width="250" />';
                                     } else {
-                                        echo '<img src="/wdlv2403/uploads/user/'.$row['photo'].'" width="250" />';
+                                        echo '<img src="/wdlv2403/uploads/user/'.$user['photo'].'" width="250" />';
                                     }
                                     ?>
                                 </td>
-                                <td><?php echo $row['name']; ?></td>
-                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $user['name']; ?></td>
+                                <td><?php echo $user['email']; ?></td>
                                 <td>
-                                    <a href="user_edit.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="user_delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a>
+                                    <a href="user_edit.php?id=<?php echo $user['id']; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="user_delete.php?id=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <?php

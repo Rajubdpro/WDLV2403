@@ -541,12 +541,25 @@ $row = mysqli_fetch_assoc($result);
                     </li>
                     <li class="nav-item dropdown nav-profile">
                         <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="https://via.placeholder.com/30x30" alt="profile">
+                            <!--- Show user image here --->
+                            <?php
+                            if ($row['photo'] == '') {
+                                echo '<img src="/wdlv2403/uploads/user/default_user.png" width="200" />';
+                            } else {
+                                echo '<img src="/wdlv2403/uploads/user/'.$row['photo'].'" width="250" />';
+                            }
+                            ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="profileDropdown">
                             <div class="dropdown-header d-flex flex-column align-items-center">
                                 <div class="figure mb-3">
-                                    <img src="https://via.placeholder.com/80x80" alt="">
+                                    <?php
+                                    if ($row['photo'] == '') {
+                                        echo '<img src="/wdlv2403/uploads/user/default_user.png" width="250" />';
+                                    } else {
+                                        echo '<img src="/wdlv2403/uploads/user/'.$row['photo'].'" width="250" />';
+                                    }
+                                    ?>
                                 </div>
                                 <div class="info text-center">
                                     <p class="name font-weight-bold mb-0"><?= $row['name'] ?></p>

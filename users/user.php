@@ -20,6 +20,7 @@ require '../includes/header.php';
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>User</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Action</th>
@@ -29,10 +30,20 @@ require '../includes/header.php';
                         <?php
                         $sql = "SELECT * FROM users";
                         $result = mysqli_query($conn, $sql);
+
                         while ($row = mysqli_fetch_assoc($result)) {
                             ?>
                             <tr>
                                 <td><?php echo $row['id']; ?></td>
+                                <td>
+                                    <?php
+                                    if ($row['photo'] == '') {
+                                        echo '<img src="/wdlv2403/uploads/user/default_user.png" width="250" />';
+                                    } else {
+                                        echo '<img src="/wdlv2403/uploads/user/'.$row['photo'].'" width="250" />';
+                                    }
+                                    ?>
+                                </td>
                                 <td><?php echo $row['name']; ?></td>
                                 <td><?php echo $row['email']; ?></td>
                                 <td>

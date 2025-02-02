@@ -23,8 +23,7 @@ mysqli_query($conn, $sql);
     $old_photo = $row['photo'];
     unlink('../uploads/user/'.$old_photo);
 
-
-    // image upload code start here
+    // image upload code
     $photo_name = $photo['name'];
     $photo_tmp_name = $photo['tmp_name'];
     $photo_size = $photo['size'];
@@ -55,6 +54,7 @@ mysqli_query($conn, $sql);
         $_SESSION['image_error'] = "You cannot upload files of this type!";
         header("Location: user_edit.php?id=$id");
     }
+
 }
 
 

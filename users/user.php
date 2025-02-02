@@ -48,7 +48,13 @@ require '../includes/header.php';
                                 <td><?php echo $user['email']; ?></td>
                                 <td>
                                     <a href="user_edit.php?id=<?php echo $user['id']; ?>" class="btn btn-primary">Edit</a>
-                                    <a href="user_delete.php?id=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
+                                    <?php
+                                    if($user['id'] != 1){
+                                        ?>
+                                        <a href="user_delete.php?id=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
+                                    <?php
+                                    }
+                                    ?>
                                 </td>
                             </tr>
                             <?php

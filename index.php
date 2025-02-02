@@ -1,18 +1,42 @@
+<?php
+session_start();
+// Session check
+require 'session_check.php';
+// Database connection
+require 'db.php';
+
+// Logo
+$sql = "SELECT * FROM logos";
+$result = $conn->query($sql);
+$after_assoc = mysqli_fetch_assoc($result);
+
+// About
+$sql = "SELECT * FROM abouts";
+$result = $conn->query($sql);
+$data = mysqli_fetch_assoc($result);
+
+// Display Skill
+$select_skill = "SELECT * FROM skills WHERE status =1";
+$skill_result = mysqli_query($conn, $select_skill);
+
+// Display Services
+$select_service = "SELECT * FROM services WHERE status =1";
+$select_res = mysqli_query($conn, $select_service);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="description" content="portfolio,creative,business,company,agency,multipurpose,modern,bootstrap4">
-  
-  <meta name="author" content="themeturn.com">
-
-  <title>Ratsaan| Creative portfolio template</title>
-
+  <title>Creative portfolio website</title>
   <!-- Mobile Specific Meta-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- bootstrap.min css -->
   <link rel="stylesheet" href="/wdlv2403/frontend/plugins/bootstrap/css/bootstrap.min.css">
-  <!-- Themeify Icon Css -->
+  <!-- Icon Css -->
   <link rel="stylesheet" href="/wdlv2403/frontend/plugins/themify/css/themify-icons.css">
   <!-- animate.css -->
   <link rel="stylesheet" href="/wdlv2403/frontend/plugins/animate-css/animate.css">
@@ -23,6 +47,9 @@
   <!-- Slick slider CSS -->
   <link rel="stylesheet" href="/wdlv2403/frontend/plugins/slick-carousel/slick/slick.css">
   <link rel="stylesheet" href="/wdlv2403/frontend/plugins/slick-carousel/slick/slick-theme.css">
+    <!--------------------->
+    <!---Favicon icon--->
+    <link rel="icon" href="assets/images/favicon.svg" type="image/x-icon">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/wdlv2403/frontend/css/style.css">
@@ -31,14 +58,13 @@
 
 <body class="portfolio" id="top">
 
-
 <!-- Navigation start -->
 <!-- Header Start --> 
 
 <nav class="navbar navbar-expand-lg bg-transprent py-4 fixed-top navigation" id="navbar">
 	<div class="container">
-	  <a class="navbar-brand" href="index.html">
-	  	<h2 class="logo">Ratsaan.</h2>
+	  <a class="navbar-brand" href="index.php">
+            <img width="115" src="uploads/logo/<?= $after_assoc['header_logo']?>">
 	  </a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="ti-view-list"></span>
@@ -46,7 +72,7 @@
   
 	  <div class="collapse navbar-collapse text-center" id="navbarsExample09">
 			<ul class="navbar-nav ml-auto">
-			   <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+			   <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
 			   <li class="nav-item"><a class="nav-link smoth-scroll" href="#skillbar">Expertise</a></li>
 			   <li class="nav-item"><a class="nav-link smoth-scroll" href="#service">Services</a></li>
 			   <li class="nav-item"><a class="nav-link smoth-scroll" href="#portfolio">Portfolio</a></li>
@@ -56,7 +82,6 @@
 	  </div>
 	</div>
 </nav>
-
 
 <!-- Navigation End -->
 
@@ -68,16 +93,16 @@
 		<div class="row align-items-center">
 			<div class="col-lg-5 col-sm-12 col-12 col-md-5">
 				<div class="slider-img position-relative">
-					<img src="/wdlv2403/frontend/images/about/9.jpg" alt="" class="img-fluid w-100">
+					<img src="uploads/about/<?= $data['photo']?>" alt="" class="img-fluid w-100">
 				</div>
 			</div>
 
 			<div class="col-lg-6 col-12 col-md-7">
 				<div class="ml-5 position-relative mt-5 mt-lg-0">
-					<span class="head-trans">Stephen</span>
-					<h1 class="font-weight-normal text-color text-md"><i class="ti-minus mr-2"></i>Theme Developer</h1>
-					<h2 class="mt-3 text-lg mb-3 text-capitalize">William Stephen.</h2>
-					<p class="animated fadeInUp lead mt-4 mb-5 text-white-50 lh-35">I work in the sweet spot for innovation, somewhere between strategy, design and technology.I love the Web and the work we do.</p>
+					<span class="head-trans"><?= $data['watermark']?></span>
+					<h1 class="font-weight-normal text-color text-md"><i class="ti-minus mr-2"></i><?= $data['designation']?></h1>
+					<h2 class="mt-3 text-lg mb-3 text-capitalize"><?= $data['name']?></h2>
+					<p class="animated fadeInUp lead mt-4 mb-5 text-white-50 lh-35"><?= $data['short_des']?></p>
 					<a href="#about" class="btn btn-solid-border">About Me</a>
 				</div>
 			</div>
@@ -98,67 +123,22 @@
 			</div>
 		</div>
 		<div class="row">
+            <?php
+            foreach ($skill_result as $item){
+            ?>
 			<div class="col-lg-6 col-md-6">
 				<div class="skill-bar mb-4 mb-lg-0">
-					<div class="mb-4 text-right"><h4 class="font-weight-normal">Html</h4></div>
+					<div class="mb-4 text-right"><h4 class="font-weight-normal"><?=$item['skill_name']?></h4></div>
 					<div class="progress">
 						<div class="progress-bar" data-percent="95">
-							<span class="percent-text"><span class="count">95</span>%</span>
+							<span class="percent-text"><span class="count"><?=$item['percentage']?></span>%</span>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="skill-bar mb-4 mb-lg-0">
-					<div class="mb-4 text-right"><h4 class="font-weight-normal">CSS</h4></div>
-					<div class="progress">
-						<div class="progress-bar" data-percent="85">
-							<span class="percent-text"><span class="count">85</span>%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-6 col-md-6">
-				<div class="skill-bar mb-4 mb-lg-0">
-					<div class="mb-4 text-right"><h4 class="font-weight-normal">Javascript</h4></div>
-					<div class="progress">
-						<div class="progress-bar" data-percent="70">
-							<span class="percent-text"><span class="count">70</span>%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="skill-bar mb-4 mb-lg-0">
-					<div class="mb-4 text-right"><h4 class="font-weight-normal">Bootstrap</h4></div>
-					<div class="progress">
-						<div class="progress-bar" data-percent="85">
-							<span class="percent-text"><span class="count">85</span>%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="skill-bar mb-4 mb-lg-0">
-					<div class=" mb-4 text-right"><h4 class="font-weight-normal">Tailwind CSS</h4></div>
-					<div class="progress">
-						<div class="progress-bar" data-percent="75">
-							<span class="percent-text"><span class="count">75</span>%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<div class="skill-bar mb-4 mb-lg-0">
-					<div class=" mb-4 text-right"><h4 class="font-weight-normal">React JS</h4></div>
-					<div class="progress">
-						<div class="progress-bar" data-percent="65">
-							<span class="percent-text"><span class="count">65</span>%</span>
-						</div>
-					</div>
-				</div>
-			</div>
+            <?php
+            }
+            ?>
 		</div>
 	</div>
 </section>	
@@ -176,45 +156,19 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="row no-gutters">
+            <?php
+            foreach ($select_res as $data){
+            ?>
 			<div class="col-lg-4 col-md-6">
 				<div class="card p-5 rounded-0">
-					<h3 class="my-4 text-capitalize">Graphics Branding Design</h3>
-					<p>It can change the way we feel about a company and the products & services they offer.</p>
+					<h3 class="my-4 text-capitalize"><?= $data['name']?></h3>
+					<p><?= $data['description']?></p>
 				</div>
 			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="card p-5 rounded-0">
-					<h3 class="my-4 text-capitalize">Front End Design Development</h3>
-					<p>It can change the way we feel about a company and the products & services they offer.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="card p-5 rounded-0">
-					<h3 class="my-4 text-capitalize">Digital Content Marketing</h3>
-					<p>It can change the way we feel about a company and the products & services they offer.</p>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6">
-				<div class="card p-5 rounded-0">
-					<h3 class="my-4 text-capitalize">Application devlopment</h3>
-					<p>It can change the way we feel about a company and the products & services they offer.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="card p-5 rounded-0">
-					<h3 class="my-4 text-capitalize">Videography Photography</h3>
-					<p>It can change the way we feel about a company and the products & services they offer.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="card  p-5 rounded-0">
-					<h3 class="my-4 text-capitalize">Wordpress Development</h3>
-					<p>It can change the way we feel about a company and the products & services they offer.</p>
-				</div>
-			</div>
+                <?php
+            }
+            ?>
 		</div>
 
 		<div class="row align-items-center mt-5" data-aos="fade-up">
@@ -444,7 +398,9 @@
 	<div class="container">
 		<div class="row align-items-center text-center text-lg-left">
 			<div class="col-lg-2">
-				<h2 class="logo mb-4">Ratsaan.</h2>
+                <a class="footer_logo" href="index.php">
+                    <img width="100" src="uploads/logo/<?= $after_assoc['footer_logo']?>">
+                </a>
 			</div>
 			<div class="col-lg-10">
 				<div class="text-right">

@@ -14,8 +14,6 @@ $row = mysqli_fetch_assoc($result);
 $old_photo = $row['photo'];
 unlink('../uploads/user/'.$old_photo);
 
-
-
 // delete user
 $sql = "DELETE FROM users WHERE id='$id'";
 $result = mysqli_query($conn, $sql);

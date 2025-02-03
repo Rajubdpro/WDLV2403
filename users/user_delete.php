@@ -7,7 +7,6 @@ require '../db.php';
 $id = $_GET['id'];
 
 // Delete old image from folder
-// Delete old image from folder
 $sql = "SELECT * FROM users WHERE id='$id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);

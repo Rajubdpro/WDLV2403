@@ -89,10 +89,9 @@ $row = mysqli_fetch_assoc($result);
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#tables" role="button" aria-expanded="false" aria-controls="tables">
+                    <a class="nav-link" href="/WDLV2403/components/portfolio/portfolio.php">
                         <i class="link-icon" data-feather="layout"></i>
-                        <span class="link-title">Table</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
+                        <span class="link-title">Portfolio</span>
                     </a>
                     <div class="collapse" id="tables">
                         <ul class="nav sub-menu">

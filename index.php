@@ -23,6 +23,10 @@ $skill_result = mysqli_query($conn, $select_skill);
 $select_service = "SELECT * FROM services WHERE status =1";
 $select_res = mysqli_query($conn, $select_service);
 
+// Display portfolio
+$select_portfolio = "SELECT * FROM portfolios WHERE status =1";
+$select_port_res = mysqli_query($conn, $select_portfolio);
+
 ?>
 
 
@@ -199,84 +203,25 @@ $select_res = mysqli_query($conn, $select_service);
 	<div class="container-fluid">
 		<div class="row">
 			<div class="post_gallery owl-carousel owl-theme">
+                <?php
+                foreach ($select_port_res as $data){
+                 ?>
 				<div class="item">
 					<div class="portfolio-item position-relative">
-						<img src="/wdlv2403/frontend/images/portfolio/3.jpg" alt="" class="img-fluid">
+						<img height="300" src="/wdlv2403/uploads/portfolio/<?= $data['photo']?>" alt="">
 
 						<div class="portoflio-item-overlay">
 							<a href="portfolio-single.html"><i class="ti-plus"></i></a>
 						</div>
 					</div>
 					<div class="text mt-3">
-						<h4 class="mb-1 text-capitalize">Web development</h4>
-						<p class="text-uppercase letter-spacing text-sm">wordpress</p>
+						<h4 class="mb-1 text-capitalize"><?= $data['title']?></h4>
+						<p class="text-uppercase letter-spacing text-sm"><?= $data['category']?></p>
 					</div>
 				</div>
-				<div class="item">
-					<div class="portfolio-item position-relative">
-						<img src="/wdlv2403/frontend/images/portfolio/4.jpg" alt="" class="img-fluid">
-
-						<div class="portoflio-item-overlay">
-							<a href="portfolio-single.html"><i class="ti-plus"></i></a>
-						</div>
-					</div>
-					<div class="text mt-3">
-						<h4 class="mb-1 text-capitalize">Web development</h4>
-						<p class="text-uppercase letter-spacing text-sm">wordpress</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="portfolio-item position-relative">
-						<img src="/wdlv2403/frontend/images/portfolio/5.jpg" alt="" class="img-fluid">
-
-						<div class="portoflio-item-overlay">
-							<a href="portfolio-single.html"><i class="ti-plus"></i></a>
-						</div>
-					</div>
-					<div class="text mt-3">
-						<h4 class="mb-1 text-capitalize">Web development</h4>
-						<p class="text-uppercase letter-spacing text-sm">wordpress</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="portfolio-item position-relative">
-						<img src="/wdlv2403/frontend/images/portfolio/6.jpg" alt="" class="img-fluid">
-
-						<div class="portoflio-item-overlay">
-							<a href="portfolio-single.html"><i class="ti-plus"></i></a>
-						</div>
-					</div>
-					<div class="text mt-3">
-						<h4 class="mb-1 text-capitalize">Web development</h4>
-						<p class="text-uppercase letter-spacing text-sm">wordpress</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="portfolio-item position-relative">
-						<img src="/wdlv2403/frontend/images/portfolio/1.jpg" alt="" class="img-fluid">
-
-						<div class="portoflio-item-overlay">
-							<a href="portfolio-single.html"><i class="ti-plus"></i></a>
-						</div>
-					</div>
-					<div class="text mt-3">
-						<h4 class="mb-1 text-capitalize">Web development</h4>
-						<p class="text-uppercase letter-spacing text-sm">wordpress</p>
-					</div>
-				</div>
-				<div class="item">
-					<div class="portfolio-item position-relative">
-						<img src="/wdlv2403/frontend/images/portfolio/2.jpg" alt="" class="img-fluid">
-
-						<div class="portoflio-item-overlay">
-							<a href="portfolio-single.html"><i class="ti-plus"></i></a>
-						</div>
-					</div>
-					<div class="text mt-3">
-						<h4 class="mb-1 text-capitalize">Web development</h4>
-						<p class="text-uppercase letter-spacing text-sm">wordpress</p>
-					</div>
-				</div>
+                    <?php
+                }
+                ?>
 			</div>
 		</div>
 	</div>

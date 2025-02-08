@@ -1,11 +1,14 @@
 <?php
+global $row;
 session_start();
+// Session check file here
 require 'session_check.php';
+// Database connection file here
 require 'db.php';
+// Header file here
 require 'includes/header.php';
 
 ?>
-
     <div class="row">
         <div class="col-lg-12 m-auto">
             <div class="card card-default">
@@ -18,10 +21,7 @@ require 'includes/header.php';
             </div>
         </div>
     </div>
-
-
-
 <?php
-// footer
+// footer file here
 require 'includes/footer.php';
 ?>

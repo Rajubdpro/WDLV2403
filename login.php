@@ -1,5 +1,5 @@
-
 <?php
+// Start Session
 session_start();
 ?>
 
@@ -21,7 +21,6 @@ session_start();
 <!---***************************************
 * login form here with error message
 ***************************************--->
-
 <section class="wrapper">
     <div class="form SingIn">
         <header>Login</header>

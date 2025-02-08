@@ -306,29 +306,61 @@ $select_port_res = mysqli_query($conn, $select_portfolio);
 
 		<div class="row justify-content-center">
 			<div class="col-lg-8">
-					<form class="contact__form form-row contact-form" method="post" action="http://themeturn.com/tf-db/ratsaan/mail.php" id="contactForm">
-					 <div class="row">
-                        <div class="col-12">
-                            <div class="alert alert-success contact__msg" style="display: none" role="alert">
-                                Your message was sent successfully.
-                            </div>
-                        </div>
-                    </div>
+					<form class="contact__form form-row contact-form" method="post" action="components/message/message_post.php">
 					<div class="form-group col-lg-6 mb-5">
 						<input type="text" id="name" name="name" class="form-control bg-transparent" placeholder="Your Name">
+                        <?php
+                        if (isset($_SESSION['name_error'])) {
+                            ?>
+                            <strong class="success_message text-danger text-left"><?php echo $_SESSION['name_error']; ?></strong>
+                            <?php
+
+                        }unset($_SESSION['name_error']);
+                        ?>
 					</div>
 					<div class="form-group col-lg-6 mb-5">
 						<input type="text" name="email" id="email" class="form-control bg-transparent" placeholder="Your Email">
-					</div>
+                        <?php
+                        if (isset($_SESSION['email_error'])) {
+                            ?>
+                            <strong class="success_message text-danger text-left"><?php echo $_SESSION['email_error']; ?></strong>
+                            <?php
+
+                        }unset($_SESSION['email_error']);
+                        ?>
+                    </div>
 					<div class="form-group col-lg-12 mb-5">
 						<input type="text" name="subject" id="subject" class="form-control bg-transparent" placeholder="Your Subject">
-					</div>
+                        <?php
+                        if (isset($_SESSION['sub_error'])) {
+                            ?>
+                            <strong class="success_message text-danger text-left"><?php echo $_SESSION['sub_error']; ?></strong>
+                            <?php
+
+                        }unset($_SESSION['sub_error']);
+                        ?>
+                    </div>
 					
 					<div class="form-group col-lg-12 mb-5">
 						<textarea id="message" name="message" cols="30" rows="6" class="form-control bg-transparent" placeholder="Your Message"></textarea>
-						
+                        <?php
+                        if (isset($_SESSION['Message_success'])) {
+                            ?>
+                            <strong class="success_message alert alert-success" style="padding-right:500px"><?php echo $_SESSION['Message_success']; ?></strong>
+                            <?php
+
+                        }unset($_SESSION['Message_success']);
+                        ?>
+                        <?php
+                        if (isset($_SESSION['message_error'])) {
+                            ?>
+                            <strong class="success_message text-danger text-left"><?php echo $_SESSION['message_error']; ?></strong>
+                            <?php
+
+                        }unset($_SESSION['message_error']);
+                        ?>
 						<div class="text-center">
-							 <input class="btn btn-main text-white mt-5" id="submit" name="submit" type="submit" class="btn btn-hero" value="Send Message">
+							 <input class="btn btn-main text-white mt-5" id="submit" type="submit" class="btn btn-hero">
 						</div>
 					</div>
 				</form>

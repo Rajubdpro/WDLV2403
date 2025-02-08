@@ -5,6 +5,10 @@ $sql = "SELECT * FROM users WHERE id = '$logged_id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
+// Display Message
+// get message
+$sql_msg = "SELECT * FROM messages ORDER BY id desc ";
+$result_msg = mysqli_query($conn, $sql_msg);
 
 
 ?>
@@ -93,37 +97,16 @@ $row = mysqli_fetch_assoc($result);
                         <i class="link-icon" data-feather="layout"></i>
                         <span class="link-title">Portfolio</span>
                     </a>
-                    <div class="collapse" id="tables">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="pages/tables/basic-table.html" class="nav-link">Basic Tables</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/tables/data-table.html" class="nav-link">Data Table</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#icons" role="button" aria-expanded="false" aria-controls="icons">
-                        <i class="link-icon" data-feather="smile"></i>
-                        <span class="link-title">Icons</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
+                    <a class="nav-link" href="/WDLV2403/components/message/message.php">
+                        <i class="link-icon" data-feather="inbox"></i>
+                        <span class="link-title">Message</span>
                     </a>
-                    <div class="collapse" id="icons">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="pages/icons/feather-icons.html" class="nav-link">Feather Icons</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/icons/flag-icons.html" class="nav-link">Flag Icons</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/icons/mdi-icons.html" class="nav-link">Mdi Icons</a>
-                            </li>
-                        </ul>
-                    </div>
                 </li>
+
+
                 <li class="nav-item nav-category">Pages</li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#general-pages" role="button" aria-expanded="false" aria-controls="general-pages">
@@ -263,69 +246,28 @@ $row = mysqli_fetch_assoc($result);
                                 <a href="javascript:;" class="text-muted">Clear all</a>
                             </div>
                             <div class="dropdown-body">
-                                <a href="javascript:;" class="dropdown-item">
+                                <?php
+                                foreach ($result_msg as $data){
+                                    ?>
+                                <a href="view.php?id=<?=$data['id']?>" class="dropdown-item <?=$data['status']==0?'bg-secondary':''?>">
                                     <div class="figure">
-                                        <img src="https://via.placeholder.com/30x30" alt="userr">
+                                        <img src="../../uploads/user/<?= $row['photo']?>" alt="user">
                                     </div>
                                     <div class="content">
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <p>Leonardo Payne</p>
-                                            <p class="sub-text text-muted">2 min ago</p>
+                                            <p class="<?=$data['status']==0?'text-white':''?>"><?= $data['name']?></p>
+                                            <p class="sub-text <?=$data['status']==0?'text-white':''?>"><?= $data['created_at']?></p>
                                         </div>
-                                        <p class="sub-text text-muted">Project status</p>
+                                        <p class="sub-text <?=$data['status']==0?'text-white':''?>"><?= $data['subject']?></p>
                                     </div>
                                 </a>
-                                <a href="javascript:;" class="dropdown-item">
-                                    <div class="figure">
-                                        <img src="https://via.placeholder.com/30x30" alt="userr">
-                                    </div>
-                                    <div class="content">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <p>Carl Henson</p>
-                                            <p class="sub-text text-muted">30 min ago</p>
-                                        </div>
-                                        <p class="sub-text text-muted">Client meeting</p>
-                                    </div>
-                                </a>
-                                <a href="javascript:;" class="dropdown-item">
-                                    <div class="figure">
-                                        <img src="https://via.placeholder.com/30x30" alt="userr">
-                                    </div>
-                                    <div class="content">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <p>Jensen Combs</p>
-                                            <p class="sub-text text-muted">1 hrs ago</p>
-                                        </div>
-                                        <p class="sub-text text-muted">Project updates</p>
-                                    </div>
-                                </a>
-                                <a href="javascript:;" class="dropdown-item">
-                                    <div class="figure">
-                                        <img src="https://via.placeholder.com/30x30" alt="userr">
-                                    </div>
-                                    <div class="content">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <p>Amiah Burton</p>
-                                            <p class="sub-text text-muted">2 hrs ago</p>
-                                        </div>
-                                        <p class="sub-text text-muted">Project deadline</p>
-                                    </div>
-                                </a>
-                                <a href="javascript:;" class="dropdown-item">
-                                    <div class="figure">
-                                        <img src="https://via.placeholder.com/30x30" alt="userr">
-                                    </div>
-                                    <div class="content">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <p>Yaretzi Mayo</p>
-                                            <p class="sub-text text-muted">5 hr ago</p>
-                                        </div>
-                                        <p class="sub-text text-muted">New record</p>
-                                    </div>
-                                </a>
+
+                                <?php
+                                }
+                                ?>
                             </div>
                             <div class="dropdown-footer d-flex align-items-center justify-content-center">
-                                <a href="javascript:;">View all</a>
+                                <a href="/wdlv2403/components/message/message.php">View all</a>
                             </div>
                         </div>
                     </li>

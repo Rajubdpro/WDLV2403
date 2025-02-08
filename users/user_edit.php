@@ -16,7 +16,9 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
 
-
+<!---*******************************************
+***Edit User Here
+********************************************-->
 <div class="row">
     <div class="col-lg-6">
         <div class="card card-default">
@@ -72,6 +74,10 @@ $row = mysqli_fetch_assoc($result);
             </div>
         </div>
     </div>
+
+    <!---*******************************************
+      *** Change user Password Here
+    ********************************************-->
     <div class="col-lg-6">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
@@ -126,12 +132,8 @@ $row = mysqli_fetch_assoc($result);
 
 </div>
 
-
-
-
-
 <?php
-// Footer
+// Footer Here
 require '../includes/footer.php';
 
 ?>

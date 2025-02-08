@@ -8,7 +8,9 @@ require '../db.php';
 require '../includes/header.php';
 ?>
 
-<!---- Display all users ---->
+<!---***************************************
+*  Display All User Here
+***************************************--->
 <div class="row">
     <div class="col-lg-12 m-auto">
         <div class="card card-default">
@@ -65,7 +67,6 @@ require '../includes/header.php';
             </div>
         </div>
     </div>
-
 
 <?php
 // Footer

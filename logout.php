@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 // session check
 require 'session_check.php';

@@ -1,7 +1,7 @@
 <?php
 session_start();
+// db connect file
 require 'db.php';
-
 
 // Get form data from login.php form and validate it here
 $email = $_POST['email'];
@@ -41,7 +41,6 @@ if (empty($password)) {
 }
 
 // If there is any error then redirect to login.php page with error message else show success message
-
 if ($flag){
     header("Location: login.php");
 } else {
@@ -66,7 +65,6 @@ if ($flag){
             header("Location: login.php");
         }
     }
-
 }
 
 ?>

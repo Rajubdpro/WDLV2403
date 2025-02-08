@@ -2,7 +2,6 @@
 session_start();
 require 'db.php';
 
-
 // Get form data from register.php form and validate it here
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -53,7 +52,6 @@ if (empty($password)) {
 if ($flag){
     header("Location: register.php");
 } else {
-
     // Check if the email exists in the database
     $sql = "SELECT COUNT(*) as total FROM users WHERE email='$email'";
     $result = $conn->query($sql);

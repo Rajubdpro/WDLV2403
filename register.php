@@ -1,8 +1,7 @@
 <?php
+// Session Start
 session_start();
 ?>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,7 +18,7 @@ session_start();
 <body>
 
 <!---***************************************
-* Register form here with error message
+* User Register form here with error message
 ***************************************--->
 
 <section class="wrapper">
@@ -70,7 +69,6 @@ session_start();
                     ?>
                     <strong class="error_message"><?php echo $_SESSION['password_error']; ?></strong>
                     <?php
-
                 }unset($_SESSION['password_error']);
                 ?>
             </div>

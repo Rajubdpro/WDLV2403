@@ -1,12 +1,13 @@
 <?php
 global $conn;
 session_start();
+// Db connection
 require "../../db.php";
-
+// Get skill details
 $skill_name = $_POST['skill_name'];
 $percentage = $_POST['percentage'];
 $flag = false;
-
+// Check skill validation and Update
 if(empty($skill_name && $percentage)){
     $flag = true;
     $_SESSION['skill_name_error'] = 'Provide name with percentage';

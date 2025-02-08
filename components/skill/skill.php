@@ -6,11 +6,13 @@ require '../../session_check.php';
 require '../../db.php';
 // Header
 require '../../includes/header.php';
-
+// Select skills
 $sql = "SELECT * FROM skills";
 $after_assoc = mysqli_query($conn, $sql);
 ?>
-
+<!---*******************************************
+*** Display skill list here
+********************************************-->
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
@@ -61,6 +63,9 @@ $after_assoc = mysqli_query($conn, $sql);
             </div>
         </div>
     </div>
+    <!---*******************************************
+    *** Add new skill Here
+    ********************************************-->
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">

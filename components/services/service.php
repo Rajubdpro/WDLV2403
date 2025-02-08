@@ -6,11 +6,14 @@ require '../../session_check.php';
 require '../../db.php';
 // Header
 require '../../includes/header.php';
-
+// Select All Services
 $sql = "SELECT * FROM services";
 $after_assoc = mysqli_query($conn, $sql);
 ?>
 
+<!---*******************************************
+*** Display All Services Here
+********************************************-->
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
@@ -60,6 +63,9 @@ $after_assoc = mysqli_query($conn, $sql);
             </div>
         </div>
     </div>
+    <!---*******************************************
+    *** Add New Services Here
+    ********************************************-->
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">

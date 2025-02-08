@@ -6,12 +6,15 @@ require '../../session_check.php';
 require '../../db.php';
 // Header
 require '../../includes/header.php';
-
+// Select Logo
 $sql = "SELECT * FROM logos";
 $result = $conn->query($sql);
 $after_assoc = mysqli_fetch_assoc($result);
 ?>
 
+<!---*******************************************
+*** Change logo form here
+********************************************-->
 <form method="POST" action="logo_update.php" enctype="multipart/form-data">
     <div class="row">
         <div class="col-lg-6">

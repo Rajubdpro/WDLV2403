@@ -1,37 +1,44 @@
 <?php
 session_start();
+// Database Connection
 require '../../db.php';
 
+// Set Time Zone
 date_default_timezone_set('Asia/Dhaka');
 $date = date('Y/m/d');
 
-echo $date;
-
+// Collect Message Data
 $name = $_POST['name'];
 $email = $_POST['email'];
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 $flag = $flag;
 
+// Name check
 if (empty($name)){
     $flag = true;
     $_SESSION['name_error'] = 'Please write your name';
     header("location:../../index.php#contact");
-}if (empty($email)){
+}
+// Email Check
+if (empty($email)){
     $flag = true;
     $_SESSION['email_error'] = 'Please write your email';
     header("location:../../index.php#contact");
-}if (empty($subject)){
+}
+// Subject Check
+if (empty($subject)){
     $flag = true;
     $_SESSION['sub_error'] = 'Please write your subject';
     header("location:../../index.php#contact");
-}if (empty($message)){
+}
+// Message Check
+if (empty($message)){
     $flag = true;
     $_SESSION['message_error'] = 'Please write your message';
     header("location:../../index.php#contact");
 }
-
-
+// Check form validation and insert data
 if ($flag){
     header("location:../../index.php#contact");
 }else{
@@ -41,6 +48,3 @@ if ($flag){
     header("location:../../index.php#contact");
 
 }
-
-
-?>

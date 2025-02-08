@@ -6,12 +6,14 @@ require '../../session_check.php';
 require '../../db.php';
 // Header
 require '../../includes/header.php';
-
+// Select Portfolios Data
 $sql = "SELECT * FROM portfolios ORDER BY id DESC ";
 $port_res = mysqli_query($conn, $sql);
 
 ?>
-
+<!---*******************************************
+*** Portfolio List Display Here
+********************************************-->
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
@@ -68,6 +70,10 @@ $port_res = mysqli_query($conn, $sql);
             </div>
         </div>
     </div>
+
+    <!---*******************************************
+    *** Add New Portfolio
+    ********************************************-->
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header">

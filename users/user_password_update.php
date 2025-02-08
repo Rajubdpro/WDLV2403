@@ -46,8 +46,4 @@ if(password_verify($password, $row['password'])){
     header("Location: user_edit.php?id=$id");
 }
 
-
-
-
-
 ?>

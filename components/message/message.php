@@ -11,6 +11,9 @@ $sql = "SELECT * FROM messages ORDER BY id desc ";
 $result = mysqli_query($conn, $sql);
 ?>
 
+    <!---*******************************************
+    *** Message List Display Here
+    ********************************************-->
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -63,5 +66,4 @@ $result = mysqli_query($conn, $sql);
 // Footer
 require "../../includes/footer.php";
 ?>
-<?php
 

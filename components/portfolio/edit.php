@@ -13,7 +13,9 @@ $sql = "SELECT * FROM portfolios WHERE id='$id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
-
+    <!---*******************************************
+    *** Edit Portfolio here
+    ********************************************-->
     <div class="row">
         <div class="col-lg-10 m-auto">
             <div class="card card-default">
@@ -59,4 +61,3 @@ $row = mysqli_fetch_assoc($result);
 // Footer
 require "../../includes/footer.php";
 ?>
-<?php

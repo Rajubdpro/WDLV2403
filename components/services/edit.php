@@ -13,7 +13,9 @@ $sql = "SELECT * FROM services WHERE id='$id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
-
+<!---*******************************************
+*** Edit Services Here
+********************************************-->
 <div class="row">
     <div class="col-lg-10 m-auto">
         <div class="card card-default">

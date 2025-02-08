@@ -7,12 +7,14 @@ require '../../db.php';
 // Header
 require '../../includes/header.php';
 
+// Select All About Data Here
 $sql = "SELECT * FROM abouts";
 $result = $conn->query($sql);
 $data = mysqli_fetch_assoc($result);
 
 ?>
 <div class="row">
+    <!----------------Change About Information --------------->
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
@@ -53,6 +55,8 @@ $data = mysqli_fetch_assoc($result);
             </div>
         </div>
     </div>
+
+    <!------------------Change About Photo------------->
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">

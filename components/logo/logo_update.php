@@ -1,8 +1,9 @@
 <?php
 global $conn;
 session_start();
+// Db connect file
 require "../../db.php";
-
+// Collect logo
 $header_logo = $_FILES['header_logo'];
 $footer_logo = $_FILES['footer_logo'];
 
@@ -55,7 +56,5 @@ if($_POST['sub'] == 0) {
     } else {
         echo "Failed to upload file.";
     }
-
 }
-
-?>
+// End code

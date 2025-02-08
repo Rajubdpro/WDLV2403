@@ -1,5 +1,5 @@
 <?php
-// Display login user
+// Select login user
 $logged_id = $_SESSION['logged_id'];
 $sql = "SELECT * FROM users WHERE id = '$logged_id'";
 $result = mysqli_query($conn, $sql);
@@ -9,9 +9,8 @@ $row = mysqli_fetch_assoc($result);
 // get message
 $sql_msg = "SELECT * FROM messages ORDER BY id desc ";
 $result_msg = mysqli_query($conn, $sql_msg);
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +36,9 @@ $result_msg = mysqli_query($conn, $sql_msg);
 <body>
 <div class="main-wrapper">
 
-    <!-- partial:partials/_sidebar.html -->
+    <!---*******************************************
+    *** Sidebar start Here
+    ********************************************-->
     <nav class="sidebar">
         <div class="sidebar-header">
             <a href="" class="sidebar-brand">
@@ -106,37 +107,6 @@ $result_msg = mysqli_query($conn, $sql_msg);
                     </a>
                 </li>
 
-
-                <li class="nav-item nav-category">Pages</li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#general-pages" role="button" aria-expanded="false" aria-controls="general-pages">
-                        <i class="link-icon" data-feather="book"></i>
-                        <span class="link-title">Special pages</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse" id="general-pages">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="pages/general/blank-page.html" class="nav-link">Blank page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/general/faq.html" class="nav-link">Faq</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/general/invoice.html" class="nav-link">Invoice</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/general/profile.html" class="nav-link">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/general/pricing.html" class="nav-link">Pricing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/general/timeline.html" class="nav-link">Timeline</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#authPages" role="button" aria-expanded="false" aria-controls="authPages">
                         <i class="link-icon" data-feather="unlock"></i>
@@ -146,46 +116,27 @@ $result_msg = mysqli_query($conn, $sql_msg);
                     <div class="collapse" id="authPages">
                         <ul class="nav sub-menu">
                             <li class="nav-item">
-                                <a href="pages/auth/login.html" class="nav-link">Login</a>
+                                <a href="/wdlv2403/login.php" class="nav-link">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/auth/register.html" class="nav-link">Register</a>
+                                <a href="/wdlv2403/register.php" class="nav-link">Register</a>
                             </li>
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#errorPages" role="button" aria-expanded="false" aria-controls="errorPages">
-                        <i class="link-icon" data-feather="cloud-off"></i>
-                        <span class="link-title">Error</span>
-                        <i class="link-arrow" data-feather="chevron-down"></i>
-                    </a>
-                    <div class="collapse" id="errorPages">
-                        <ul class="nav sub-menu">
-                            <li class="nav-item">
-                                <a href="pages/error/404.html" class="nav-link">404</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/error/500.html" class="nav-link">500</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item nav-category">Docs</li>
-                <li class="nav-item">
-                    <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
-                        <i class="link-icon" data-feather="hash"></i>
-                        <span class="link-title">Documentation</span>
-                    </a>
                 </li>
             </ul>
         </div>
     </nav>
 
+    <!---*******************************************
+    *** Sidebar End Here
+    ********************************************-->
+
+    <!---*******************************************
+    *** Top Right Nav Menu Start Here
+    ********************************************-->
 
     <div class="page-wrapper">
-
-        <!-- partial:partials/_navbar.html -->
         <nav class="navbar">
             <a href="#" class="sidebar-toggler">
                 <i data-feather="menu"></i>
@@ -383,9 +334,10 @@ $result_msg = mysqli_query($conn, $sql_msg);
                     </li>
                 </ul>
             </div>
+            <!---*******************************************
+            *** Top Right Nav Menu End Here
+            ********************************************-->
         </nav>
-        <!-- partial -->
 
+        <!------------------Page Content Loaded from Here---------------->
         <div class="page-content">
-
-

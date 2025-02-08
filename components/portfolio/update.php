@@ -2,7 +2,7 @@
 global $conn;
 session_start();
 require "../../db.php";
-
+// Get Form Data
 $id = $_POST['id'];
 $title = $_POST['title'];
 $category = $_POST['category'];

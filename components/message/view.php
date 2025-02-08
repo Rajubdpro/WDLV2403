@@ -6,12 +6,13 @@ require '../../session_check.php';
 require '../../db.php';
 // Header
 require '../../includes/header.php';
-
+// Get Id
 $id = $_GET['id'];
+// Select All Message
 $sql = "SELECT * FROM messages WHERE id = '$id'";
 $reselt = $conn->query($sql);
 $data = mysqli_fetch_assoc($reselt);
-
+// Update Status
 $update = "UPDATE messages SET status=1 WHERE id='$id'";
 $conn->query($update);
 

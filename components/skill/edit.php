@@ -13,7 +13,9 @@ $sql = "SELECT * FROM skills WHERE id='$id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
-
+<!---*******************************************
+*** Edit Skill Here
+********************************************-->
 <div class="row">
     <div class="col-lg-6">
         <div class="card card-default">

@@ -20,6 +20,7 @@
 <script src="/wdlv2403/dashboard/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script src="/wdlv2403/dashboard/assets/vendors/apexcharts/apexcharts.min.js"></script>
 <script src="/wdlv2403/dashboard/assets/vendors/progressbar.js/progressbar.min.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
 <!-- end plugin js for this page -->
 <!-- inject:js -->
 <script src="/wdlv2403/dashboard/assets/vendors/feather-icons/feather.min.js"></script>
@@ -28,6 +29,12 @@
 <!-- custom js for this page -->
 <script src="/wdlv2403/dashboard/assets/js/dashboard.js"></script>
 <script src="/wdlv2403/dashboard/assets/js/datepicker.js"></script>
+
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    } );
+</script>
 <!-- end custom js for this page -->
 </body>
 </html>

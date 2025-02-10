@@ -16,6 +16,5 @@ unlink('../uploads/user/'.$old_photo);
 // delete user
 $sql = "DELETE FROM users WHERE id='$id'";
 $result = mysqli_query($conn, $sql);
+$_SESSION['delete_user'] = "User Deleted Successfully";
 header("Location: user.php");
-
-?>

@@ -5,10 +5,14 @@ $sql = "SELECT * FROM users WHERE id = '$logged_id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
-// Display Message
-// get message
+// Get message
 $sql_msg = "SELECT * FROM messages ORDER BY id desc ";
 $result_msg = mysqli_query($conn, $sql_msg);
+
+// Get total message
+$total_msg = "SELECT COUNT(*) as total FROM messages ORDER BY id desc ";
+$total_res = mysqli_query($conn, $total_msg);
+$after_assoc = mysqli_fetch_assoc($total_res);
 ?>
 
 <!DOCTYPE html>
@@ -26,12 +30,15 @@ $result_msg = mysqli_query($conn, $sql_msg);
     <!-- end plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="/wdlv2403/dashboard/assets/fonts/feather-font/css/iconfont.css">
+    <!-- Data Table Plugin -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
     <link rel="stylesheet" href="/wdlv2403/dashboard/assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="/wdlv2403/dashboard/assets/css/demo_1/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="/wdlv2403/dashboard/assets/images/favicon.svg" />
+
 </head>
 <body>
 <div class="main-wrapper">
@@ -42,7 +49,7 @@ $result_msg = mysqli_query($conn, $sql_msg);
     <nav class="sidebar">
         <div class="sidebar-header">
             <a href="" class="sidebar-brand">
-                Noble<span>UI</span>
+                <h2>Raju</h2>
             </a>
             <div class="sidebar-toggler not-active">
                 <span></span>
@@ -193,17 +200,14 @@ $result_msg = mysqli_query($conn, $sql_msg);
                         </a>
                         <div class="dropdown-menu" aria-labelledby="messageDropdown">
                             <div class="dropdown-header d-flex align-items-center justify-content-between">
-                                <p class="mb-0 font-weight-medium">9 New Messages</p>
+                                <p class="mb-0 font-weight-medium"><?= $after_assoc['total']?> New Message</p>
                                 <a href="javascript:;" class="text-muted">Clear all</a>
                             </div>
                             <div class="dropdown-body">
                                 <?php
                                 foreach ($result_msg as $data){
                                     ?>
-                                <a href="view.php?id=<?=$data['id']?>" class="dropdown-item <?=$data['status']==0?'bg-secondary':''?>">
-                                    <div class="figure">
-                                        <img src="../../uploads/user/<?= $row['photo']?>" alt="user">
-                                    </div>
+                                <a href="view.php?id=<?=$data['id']?>" class="dropdown-item border pt-1 <?=$data['status']==0?'bg-secondary':''?>">
                                     <div class="content">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <p class="<?=$data['status']==0?'text-white':''?>"><?= $data['name']?></p>

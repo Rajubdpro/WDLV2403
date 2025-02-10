@@ -19,20 +19,20 @@ $after_assoc = mysqli_fetch_assoc($result);
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
-                <div class="card-header">
-                    <h2>Change Header Logo</h2>
-                </div>
-                <div class="card-body">
-                    <div class="success_message mb-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3>Change Header Logo</h3>
+                    <div class="success_message">
                         <?php
                         if (isset($_SESSION['update_header_logo'])) {
                             ?>
-                            <strong class="success_message alert alert-success" style="padding-right: 500px"><?php echo $_SESSION['update_header_logo']; ?></strong>
+                            <strong class="success_message alert alert-success"><?php echo $_SESSION['update_header_logo']; ?></strong>
                             <?php
 
                         }unset($_SESSION['update_header_logo']);
                         ?>
                     </div>
+                </div>
+                <div class="card-body">
                     <div class="mt-2">
                         <label for="logo" style="font-size: 17px">Upload Logo</label>
                         <input type="file" name="header_logo" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
@@ -48,20 +48,20 @@ $after_assoc = mysqli_fetch_assoc($result);
         </div>
         <div class="col-lg-6">
             <div class="card">
-                <div class="card-header">
-                    <h2>Change Footer Logo</h2>
-                </div>
-                <div class="card-body">
-                    <div class="success_message mb-3">
+                <div class="card-header d-flex justify-content-between align-items-centers">
+                    <h3>Change Footer Logo</h3>
+                    <div class="success_message">
                         <?php
                         if (isset($_SESSION['update_footer_logo'])) {
                             ?>
-                            <strong class="success_message alert alert-success" style="padding-right: 500px"><?php echo $_SESSION['update_footer_logo']; ?></strong>
+                            <strong class="success_message alert alert-success"><?php echo $_SESSION['update_footer_logo']; ?></strong>
                             <?php
 
                         }unset($_SESSION['update_footer_logo']);
                         ?>
                     </div>
+                </div>
+                <div class="card-body">
                     <div class="mt-2">
                         <label for="logo" style="font-size: 17px">Upload Logo</label>
                         <input type="file" name="footer_logo" class="form-control" onchange="document.getElementById('footer_logo').src = window.URL.createObjectURL(this.files[0])">

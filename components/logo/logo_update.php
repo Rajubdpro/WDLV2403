@@ -54,7 +54,7 @@ if($_POST['sub'] == 0) {
         header('Location: logo.php');
         exit();
     } else {
-        echo "Failed to upload file.";
+        header('Location: logo.php');
     }
 }
 // End code

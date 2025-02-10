@@ -6,6 +6,11 @@ require '../session_check.php';
 require '../db.php';
 // Header
 require '../includes/header.php';
+// Select login user
+$logged_id = $_SESSION['logged_id'];
+$sql = "SELECT * FROM users WHERE id = '$logged_id'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <!---***************************************
@@ -14,11 +19,21 @@ require '../includes/header.php';
 <div class="row">
     <div class="col-lg-12 m-auto">
         <div class="card card-default">
-            <div class="card-header card-header-border-bottom">
+            <div class="card-header  d-flex justify-content-between align-items-center">
                 <h2>Users</h2>
+                <div class="success_message">
+                    <?php
+                    if (isset($_SESSION['delete_user'])) {
+                        ?>
+                        <strong class="success_message alert alert-success"><?php echo $_SESSION['delete_user']; ?></strong>
+                        <?php
+
+                    }unset($_SESSION['delete_user']);
+                    ?>
+                </div>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped table-vcenter">
+                <table class="table table-bordered table-striped table-vcenter display"  id="myTable">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -51,7 +66,7 @@ require '../includes/header.php';
                                 <td>
                                     <a href="user_edit.php?id=<?php echo $user['id']; ?>" class="btn btn-primary">Edit</a>
                                     <?php
-                                    if($user['id'] != 1){
+                                    if($user['id'] !=$logged_id){
                                         ?>
                                         <a href="user_delete.php?id=<?php echo $user['id']; ?>" class="btn btn-danger">Delete</a>
                                     <?php

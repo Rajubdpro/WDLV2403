@@ -17,13 +17,13 @@ $port_res = mysqli_query($conn, $sql);
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <h2>Portfolio List</h2>
-                <div class="success_message mb-3" style="display: flex; justify-content: end; margin-top: -50px" >
+                <div class="success_message">
                     <?php
                     if (isset($_SESSION['delete_portfolio'])) {
                         ?>
-                        <strong class="success_message alert alert-danger" style="padding-right: 200px"><?php echo $_SESSION['delete_portfolio']; ?></strong>
+                        <strong class="success_message alert alert-danger"><?php echo $_SESSION['delete_portfolio']; ?></strong>
                         <?php
 
                     }unset($_SESSION['delete_portfolio']);
@@ -76,20 +76,20 @@ $port_res = mysqli_query($conn, $sql);
     ********************************************-->
     <div class="col-lg-4">
         <div class="card">
-            <div class="card-header">
-                <h2>Add new Portfolio</h2>
-            </div>
-            <div class="card-body">
-                <div class="success_message mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Add New Portfolio</h3>
+                <div class="success_message">
                     <?php
                     if (isset($_SESSION['added_new_portfolio'])) {
                         ?>
-                        <strong class="success_message alert alert-success" style="padding-right: 200px"><?php echo $_SESSION['added_new_portfolio']; ?></strong>
+                        <strong class="success_message alert alert-success"><?php echo $_SESSION['added_new_portfolio']; ?></strong>
                         <?php
 
                     }unset($_SESSION['added_new_portfolio']);
                     ?>
                 </div>
+            </div>
+            <div class="card-body">
                 <form action="portfolio_post.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label style="font-size: 15px" for="title" class="form-check-label">Portfolio Name</label>

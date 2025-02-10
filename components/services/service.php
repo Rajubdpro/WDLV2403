@@ -17,13 +17,13 @@ $after_assoc = mysqli_query($conn, $sql);
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
-            <div class="card-header">
-                <h2>Services List</h2>
-               <div class="success_message mb-3" style="display: flex; justify-content: end; margin-top: -50px" >
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Services List</h3>
+               <div class="success_message">
                     <?php
                     if (isset($_SESSION['delete_service'])) {
                        ?>
-                        <strong class="success_message alert alert-danger" style="padding-right: 200px"><?php echo $_SESSION['delete_service']; ?></strong>
+                        <strong class="success_message alert alert-danger"><?php echo $_SESSION['delete_service']; ?></strong>
                         <?php
 
                     }unset($_SESSION['delete_service']);
@@ -68,20 +68,20 @@ $after_assoc = mysqli_query($conn, $sql);
     ********************************************-->
     <div class="col-lg-4">
         <div class="card">
-            <div class="card-header">
-                <h2>Add new Service</h2>
-            </div>
-            <div class="card-body">
-                <div class="success_message mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Add new Service</h3>
+                <div class="success_message">
                     <?php
                     if (isset($_SESSION['added_new_service'])) {
                         ?>
-                        <strong class="success_message alert alert-success" style="padding-right: 200px"><?php echo $_SESSION['added_new_service']; ?></strong>
+                        <strong class="success_message alert alert-success"><?php echo $_SESSION['added_new_service']; ?></strong>
                         <?php
 
                     }unset($_SESSION['added_new_service']);
                     ?>
                 </div>
+            </div>
+            <div class="card-body">
                 <form action="services_post.php" method="POST">
                     <div class="form-group">
                         <label style="font-size: 15px" for="service_name" class="form-check-label">Service Name</label>

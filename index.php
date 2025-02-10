@@ -134,7 +134,7 @@ $select_port_res = mysqli_query($conn, $select_portfolio);
 				<div class="skill-bar mb-4 mb-lg-0">
 					<div class="mb-4 text-right"><h4 class="font-weight-normal"><?=$item['skill_name']?></h4></div>
 					<div class="progress">
-						<div class="progress-bar" data-percent="95">
+						<div class="progress-bar" data-percent="<?=$item['percentage']?>">
 							<span class="percent-text"><span class="count"><?=$item['percentage']?></span>%</span>
 						</div>
 					</div>

@@ -19,19 +19,19 @@ $row = mysqli_fetch_assoc($result);
     <div class="row">
         <div class="col-lg-10 m-auto">
             <div class="card card-default">
-                <div class="card-header card-header-border-bottom">
+                <div class="card-header card-header-border-bottom d-flex justify-content-between align-items-center">
                     <h2>Edit Portfolio</h2>
-                </div>
-                <div class="card-body">
-                    <div class="success_message mb-3">
+                    <div class="success_message">
                         <?php
                         if (isset($_SESSION['portfolio_updated_success'])) {
                             ?>
-                            <strong class="success_message alert alert-success" style="padding-right: 200px"><?php echo $_SESSION['portfolio_updated_success']; ?></strong>
+                            <h5 class="success_message alert alert-success"><?php echo $_SESSION['portfolio_updated_success']; ?></h5>
                             <?php
                         }unset($_SESSION['portfolio_updated_success']);
                         ?>
                     </div>
+                </div>
+                <div class="card-body">
                     <form action="update.php" method="POST" multiple="multiple" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $row['id']?>">
                         <div class="form-group">

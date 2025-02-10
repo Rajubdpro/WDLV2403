@@ -16,9 +16,9 @@ $after_assoc = mysqli_query($conn, $sql);
 <div class="row">
     <div class="col-lg-8">
         <div class="card">
-            <div class="card-header">
-                <h2>Skill List</h2>
-                <div class="success_message mb-3" style="display: flex; justify-content: end; margin-top: -50px" >
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Skill List</h3>
+                <div class="success_message" >
                     <?php
                     if (isset($_SESSION['delete_skill'])) {
                         ?>
@@ -68,20 +68,20 @@ $after_assoc = mysqli_query($conn, $sql);
     ********************************************-->
     <div class="col-lg-4">
         <div class="card">
-            <div class="card-header">
-                <h2>Add new skill</h2>
-            </div>
-            <div class="card-body">
-                <div class="success_message mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>Add new skill</h3>
+                <div class="success_message">
                     <?php
                     if (isset($_SESSION['added_new_skill'])) {
                         ?>
-                        <strong class="success_message alert alert-success" style="padding-right: 200px"><?php echo $_SESSION['added_new_skill']; ?></strong>
+                        <strong class="success_message alert alert-success"><?php echo $_SESSION['added_new_skill']; ?></strong>
                         <?php
 
                     }unset($_SESSION['added_new_skill']);
                     ?>
                 </div>
+            </div>
+            <div class="card-body">
                 <form action="skill_post.php" method="POST">
                     <div class="form-group">
                         <label style="font-size: 15px" for="skill_name" class="form-check-label">Skill Name</label>

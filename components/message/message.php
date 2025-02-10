@@ -6,7 +6,7 @@ require '../../session_check.php';
 require '../../db.php';
 // Header
 require '../../includes/header.php';
-// get message
+// Get message
 $sql = "SELECT * FROM messages ORDER BY id desc ";
 $result = mysqli_query($conn, $sql);
 ?>

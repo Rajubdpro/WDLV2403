@@ -22,22 +22,22 @@ $row = mysqli_fetch_assoc($result);
 <div class="row">
     <div class="col-lg-6">
         <div class="card card-default">
-            <div class="card-header card-header-border-bottom">
+            <div class="card-header card-header-border-bottom d-flex justify-content-between align-items-center">
                 <h2>Edit User</h2>
+                <div class="success_message mb-3">
+                    <?php
+                    if (isset($_SESSION['user_updated_success'])) {
+                        ?>
+                        <strong class="success_message alert alert-success"><?php echo $_SESSION['user_updated_success']; ?></strong>
+                        <?php
+
+                    }unset($_SESSION['user_updated_success']);
+                    ?>
+                </div>
             </div>
             <div class="card-body">
                 <form action="user_update.php" method="POST" multiple="multiple" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?= $row['id']?>">
-                    <div class="success_message mb-3">
-                        <?php
-                        if (isset($_SESSION['user_updated_success'])) {
-                            ?>
-                            <strong class="success_message alert alert-success" style="padding-right: 500px"><?php echo $_SESSION['user_updated_success']; ?></strong>
-                            <?php
-
-                        }unset($_SESSION['user_updated_success']);
-                        ?>
-                    </div>
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" name="name" value="<?= $row['name']?>" class="form-control" id="name" placeholder="Enter name">
@@ -70,6 +70,7 @@ $row = mysqli_fetch_assoc($result);
                         ?>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Update Profile</button>
+                    <a href="user.php" class="btn btn-primary mt-3">Back</a>
                 </form>
             </div>
         </div>
@@ -80,22 +81,22 @@ $row = mysqli_fetch_assoc($result);
     ********************************************-->
     <div class="col-lg-6">
         <div class="card card-default">
-            <div class="card-header card-header-border-bottom">
+            <div class="card-header card-header-border-bottom d-flex justify-content-between align-items-center">
                 <h2>Change Password</h2>
+                <div class="success_message mb-3">
+                    <?php
+                    if (isset($_SESSION['password_success'])) {
+                        ?>
+                        <strong class="success_message alert alert-success"><?php echo $_SESSION['password_success']; ?></strong>
+                        <?php
+
+                    }unset($_SESSION['password_success']);
+                    ?>
+                </div>
             </div>
             <div class="card-body">
                 <form action="user_password_update.php" method="POST">
                     <input type="hidden" name="id" value="<?= $row['id']?>">
-                    <div class="success_message mb-3">
-                        <?php
-                        if (isset($_SESSION['password_success'])) {
-                            ?>
-                            <strong class="success_message alert alert-success" style="padding-right: 500px"><?php echo $_SESSION['password_success']; ?></strong>
-                            <?php
-
-                        }unset($_SESSION['password_success']);
-                        ?>
-                    </div>
                     <div class="form-group">
                         <label for="password">Current Password</label>
                         <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">

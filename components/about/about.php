@@ -17,20 +17,20 @@ $data = mysqli_fetch_assoc($result);
     <!----------------Change About Information --------------->
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center ">
                 <h2 class=""> Change About Information </h2>
-            </div>
-            <div class="card-body">
-                <div class="success_message mb-3">
+                <div class="success_message">
                     <?php
                     if (isset($_SESSION['about_update'])) {
                         ?>
-                        <strong class="success_message alert alert-success" style="padding-right: 300px"><?php echo $_SESSION['about_update']; ?></strong>
+                        <strong class="success_message alert alert-success"><?php echo $_SESSION['about_update']; ?></strong>
                         <?php
 
                     }unset($_SESSION['about_update']);
                     ?>
                 </div>
+            </div>
+            <div class="card-body">
                 <form action="update.php" method="POST">
                 <div class="form-group mb-3">
                     <label style="font-size: 14px" for="designation">Designation</label>
@@ -59,20 +59,20 @@ $data = mysqli_fetch_assoc($result);
     <!------------------Change About Photo------------->
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <h2 class=""> Change About Photo </h2>
-            </div>
-            <div class="card-body">
-                <div class="success_message mb-3">
+                <div class="success_message">
                     <?php
                     if (isset($_SESSION['about_photo_update'])) {
                         ?>
-                        <strong class="success_message alert alert-success" style="padding-right: 300px"><?php echo $_SESSION['about_photo_update']; ?></strong>
+                        <strong class="success_message alert alert-success"><?php echo $_SESSION['about_photo_update']; ?></strong>
                         <?php
 
                     }unset($_SESSION['about_photo_update']);
                     ?>
                 </div>
+            </div>
+            <div class="card-body">
                 <form action="photo_update.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group mb-3">
                         <label style="font-size: 14px" for="photo">About Photo</label>
